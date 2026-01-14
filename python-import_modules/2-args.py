@@ -6,7 +6,10 @@ argv = sys.argv
 argc = len(sys.argv) - 1
 
 if argc == 0:
-    print(f"{argc} arguments.")
+    print(f"{argc} argument.")
+elif argc == 1:
+    print(f"{argc} argument:")
+    print(f"{1}: {argv[1]}")
 else:
     print(f"{argc} arguments:")
     for i in range(1, argc + 1):
