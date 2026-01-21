@@ -24,3 +24,5 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([1, 3, 4, 2]), 4)
 
         self.assertEqual(max_integer([1, 3, 4, float('inf'), 2]), float('inf'))
+
+        self.assertEqual(max_integer([4]), 4)
