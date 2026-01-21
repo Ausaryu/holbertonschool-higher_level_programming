@@ -17,10 +17,10 @@ class TestMaxInteger(unittest.TestCase):
         with self.assertRaises(TypeError):
             max_integer([1, 3, 4, 2], [1, 3, 4, 2])
 
-        self.assertEqual(max_integer([1, 7.9, 3.7, 4, 2]), -4)
-
         self.assertEqual(max_integer("aaaaabc"), 'c')
 
         self.assertEqual(max_integer([1, 7.9, 3.7, 4, 2]), 7.9)
 
         self.assertEqual(max_integer([1, 3, 4, 2]), 4)
+
+        self.assertEqual(max_integer([1, 3, 4, float('inf'), 2]), float('inf'))
