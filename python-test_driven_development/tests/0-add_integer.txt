@@ -1,0 +1,30 @@
+Trying:
+    add_integer(1, 1):
+Expecting:
+    2
+ok
+Trying:
+    add_integer(-1, 1):
+Expecting:
+    0
+ok
+Trying:
+    add_integer(1):
+Expecting:
+    99
+ok
+Trying:
+    add_integer(1, -100):
+Expecting:
+    -99
+ok
+Trying:
+    add_integer('a', 1):
+Expecting:
+    a must be an integer
+ok
+Trying:
+    add_integer(1, 'b'):
+Expecting:
+    b must be an integer
+ok
