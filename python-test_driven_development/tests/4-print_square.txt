@@ -22,7 +22,6 @@
 #
 
 >>> print_square(0)
-<BLANKLINE>
 
 >>> print_square(0.3)
 Traceback (most recent call last):
