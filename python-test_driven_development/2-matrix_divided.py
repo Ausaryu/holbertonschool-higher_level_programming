@@ -1,5 +1,15 @@
 #!/usr/bin/python3
+"""
+This module contains a function that divides all elements of a matrix by a
+given number and returns a new matrix.
+"""
+
+
 def matrix_divided(matrix, div):
+    """
+    Divides each element of a matrix by a number and returns a new matrix with
+    the results rounded to two decimal places.
+    """
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
     if div == 0:
