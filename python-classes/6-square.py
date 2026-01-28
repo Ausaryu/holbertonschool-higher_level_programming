@@ -13,7 +13,7 @@ class Square:
         """
         Initializes a Square instance with a given size.
         """
-        if not isinstance(size, int):
+        if not type(size) is int:
             raise TypeError("size must be an integer")
         if size < 0:
             raise ValueError("size must be >= 0")
@@ -47,7 +47,7 @@ class Square:
         """
         Sets a new size for the square.
         """
-        if not isinstance(value, int):
+        if not type(value) is int:
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
@@ -82,10 +82,10 @@ class Square:
         size = self.__size
         position = self.__position
 
-        for i in range(position[1]):
-            print()
         if size == 0:
             print()
         else:
+            for i in range(position[1]):
+                print()
             for i in range(size):
                 print(position[0] * ' ' + '#' * size)
