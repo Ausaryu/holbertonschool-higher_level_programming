@@ -29,6 +29,8 @@ class Rectangle:
         """
         Returns a string representation of the rectangle using '#'.
         """
+        if self.__height == 0 or self.__width == 0:
+            return ""
         result = ""
         for i in range(self.height):
             if i != self.height - 1:
