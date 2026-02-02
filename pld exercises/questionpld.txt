@@ -1,0 +1,51 @@
+Que signifie OOP ?
+
+    Object oriented programming
+
+C'est quoi une classe ?
+
+    c'est un modele qui défini un objet.
+
+C'est quoi une instance ?
+
+    c'est un objet crée a partir d'une classe.
+
+C'est quoi la différence entre une classe, un objet et une instance ?
+
+    Une classe sert à créer des objets.
+    Un objet est une instance d’une classe.
+
+Qu'est ce qu'une méthode (method) en Python ?
+    c'est une fonction définie dans une classe
+
+C'est quoi la méthode init ?
+    Elle sert à initialiser un objet.
+
+C'est quoi le mot self en python ?
+    self c'est l'objet en cours.
+
+C'est quoi la différence entre une attribut (attribute) et une propriété (property) en Python ?
+    Un attribut stocke une valeur.
+    Une propriété contrôle l’accès à une valeur. (@property)
+
+C'est quoi le dict en Python ?
+    variable qui contient tout les attribut de l'objet.
+
+Le  getattr() est quoi et elle sert à quoi ?
+    methode utilisée pour obtenir l'attribut d'un objet.
+
+C'est quoi la méthode str en python?
+    Sert à afficher un objet de façon lisible et agréable.
+
+C'est quoi la méthode repr en python ?
+    Sert à donner une représentation précise et utile pour le debug.
+
+Quelle est la  différence entre instance method (méthode d'instance), class method (méthode de classe) et static method (méthode statique) en Python ?
+    Une méthode d’instance agit sur un objet précis (self), une méthode de classe agit sur la classe entière (cls),
+    et une méthode statique est juste une fonction utile rangée dans la classe, sans lien direct avec l’objet ou la classe.
+
+Quelle est la différence entre class attribute et instance attribute (attribut d'une classe et attribut d'une instance) ?
+    Les attributs de classes sont utilisés par toutes les instances,
+    Les attributs d'instance sont propres a chaques objets.
+
+
