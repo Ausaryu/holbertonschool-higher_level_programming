@@ -14,4 +14,3 @@
 >>> single = MyList([5])
 >>> single.print_sorted()
 [5]
-"""

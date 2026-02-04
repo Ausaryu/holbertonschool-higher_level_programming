@@ -24,6 +24,7 @@ class BaseGeometry:
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
 
+
 class Rectangle(BaseGeometry):
     """
     This class represents a rectangle using width and height.
@@ -49,6 +50,7 @@ class Rectangle(BaseGeometry):
         Returns a string representation of the rectangle.
         """
         return f"[Rectangle] {self.__width}/{self.__height}"
+
 
 class Square(Rectangle):
     def __init__(self, size):
