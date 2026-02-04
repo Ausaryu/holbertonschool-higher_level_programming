@@ -53,6 +53,10 @@ class Rectangle(BaseGeometry):
 
 
 class Square(Rectangle):
+    """
+    This class represents a square using size.
+    """
+
     def __init__(self, size):
         """
         Initializes a Square instance with validated size.
