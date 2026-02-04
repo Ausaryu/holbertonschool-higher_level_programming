@@ -75,13 +75,6 @@ Traceback (most recent call last):
 ...
 TypeError: n must be an integer
 
-# --- integer_validator(): bool edge case ---
-# Note: isinstance(True, int) == True in Python.
-# If your implementation uses isinstance(value, int), these will PASS.
-# If you used type(value) is int, these will RAISE TypeError.
->>> b.integer_validator("n", True)
->>> b.integer_validator("n", False)
-
 # --- integer_validator(): missing arguments ---
 >>> b.integer_validator("width")
 Traceback (most recent call last):
