@@ -1,25 +1,100 @@
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> b = BaseGeometry()
 
->>> bg = BaseGeometry()
->>> bg.area()
+# --- area() normal behavior ---
+>>> b.area()
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
 
->>> bg.integer_validator("width", 89)
->>> bg.integer_validator("my_int", 12)
-
->>> bg.integer_validator("name", "John")
+# --- area() edge cases: missing/extra arguments ---
+>>> b.area(1)
 Traceback (most recent call last):
 ...
-TypeError: name must be an integer
+TypeError: area() takes 1 positional argument but 2 were given
 
->>> bg.integer_validator("age", 0)
+>>> b.area(1, 2)
 Traceback (most recent call last):
 ...
-ValueError: age must be greater than 0
+TypeError: area() takes 1 positional argument but 3 were given
 
->>> bg.integer_validator("distance", -4)
+# --- integer_validator(): valid integers ---
+>>> b.integer_validator("integer", 1)
+>>> b.integer_validator("width", 10)
+>>> b.integer_validator("height", 999999)
+
+# --- integer_validator(): 0 and negative ---
+>>> b.integer_validator("integer", 0)
 Traceback (most recent call last):
 ...
-ValueError: distance must be greater than 0
+ValueError: integer must be greater than 0
+
+>>> b.integer_validator("integer", -1)
+Traceback (most recent call last):
+...
+ValueError: integer must be greater than 0
+
+>>> b.integer_validator("integer", -999)
+Traceback (most recent call last):
+...
+ValueError: integer must be greater than 0
+
+# --- integer_validator(): wrong types (common) ---
+>>> b.integer_validator("n", "5")
+Traceback (most recent call last):
+...
+TypeError: n must be an integer
+
+>>> b.integer_validator("n", 5.0)
+Traceback (most recent call last):
+...
+TypeError: n must be an integer
+
+>>> b.integer_validator("n", None)
+Traceback (most recent call last):
+...
+TypeError: n must be an integer
+
+>>> b.integer_validator("n", [])
+Traceback (most recent call last):
+...
+TypeError: n must be an integer
+
+>>> b.integer_validator("n", {})
+Traceback (most recent call last):
+...
+TypeError: n must be an integer
+
+>>> b.integer_validator("n", (1,))
+Traceback (most recent call last):
+...
+TypeError: n must be an integer
+
+>>> b.integer_validator("n", object())
+Traceback (most recent call last):
+...
+TypeError: n must be an integer
+
+# --- integer_validator(): bool edge case ---
+# Note: isinstance(True, int) == True in Python.
+# If your implementation uses isinstance(value, int), these will PASS.
+# If you used type(value) is int, these will RAISE TypeError.
+>>> b.integer_validator("n", True)
+>>> b.integer_validator("n", False)
+
+# --- integer_validator(): missing arguments ---
+>>> b.integer_validator("width")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> b.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+# --- integer_validator(): too many arguments ---
+>>> b.integer_validator("width", 5, 4)
+Traceback (most recent call last):
+...
+TypeError: integer_validator() takes 3 positional arguments but 4 were given
