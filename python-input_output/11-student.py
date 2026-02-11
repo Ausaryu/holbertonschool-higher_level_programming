@@ -41,4 +41,5 @@ class Student:
         """
         Replaces the attributes of the Student instance using a dictionary.
         """
-        self.__dict__ = json
+        for key, value in json.items():
+            setattr(self, key, value)
