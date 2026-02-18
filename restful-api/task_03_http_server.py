@@ -56,7 +56,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 not found")
+            self.wfile.write(b"Endpoint not found")
 
 
 server = http.server.HTTPServer(("localhost", 8000), Handler)
