@@ -1,8 +1,22 @@
+#!/usr/bin/env python3
+"""
+This module implements a simple HTTP server that provides basic API
+endpoints returning plain text or JSON responses.
+"""
+
 import http.server
 import json
 
+
 class Handler(http.server.SimpleHTTPRequestHandler):
+    """
+    This class handles HTTP GET requests for different API endpoints.
+    """
+
     def do_GET(self):
+        """
+        Handles GET requests and returns responses based on the request path.
+        """
         if self.path == '/':
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
@@ -26,8 +40,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(b"OK")
 
         elif self.path == '/info':
-            data = {"version": "1.0",
-                    "description": "A simple API built with http.server"}
+            data = {
+                "version": "1.0",
+                "description": "A simple API built with http.server"
+            }
             json_data = json.dumps(data).encode("utf-8")
 
             self.send_response(200)
