@@ -72,10 +72,10 @@ def add_user():
     for key, value in data.items():
         users[username][key] = value
 
-    return {
+    return jsonify({
         "message": "User added",
         "user": data
-    }
+    }), 201
 
 
 if __name__ == "__main__":
