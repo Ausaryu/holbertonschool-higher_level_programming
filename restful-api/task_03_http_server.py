@@ -53,7 +53,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json_data)
 
         else:
-            self.send_response(200)
+            self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"404 not found")
