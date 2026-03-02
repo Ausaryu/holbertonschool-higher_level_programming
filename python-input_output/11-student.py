@@ -25,7 +25,8 @@ class Student:
         If attrs is a list of strings, only attributes listed in attrs
         are included in the returned dictionary.
         """
-        if isinstance(attrs, list) and all(isinstance(value, str) for value in attrs):
+        if isinstance(attrs, list) and all(isinstance(value, str)
+                                           for value in attrs):
             result = {}
             for i in attrs:
                 try:
@@ -40,4 +41,5 @@ class Student:
         """
         Replaces the attributes of the Student instance using a dictionary.
         """
-        self.__dict__ = json
+        for key, value in json.items():
+            setattr(self, key, value)
