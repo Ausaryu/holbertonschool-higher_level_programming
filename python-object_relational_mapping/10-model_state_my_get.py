@@ -20,7 +20,7 @@ if __name__ == "__main__":
     states = session.query(State)\
         .filter(State.name == sys.argv[4])\
         .order_by(State.id)\
-        .all()
+        .first()
     if states != []:
         for row in states:
             print("{}: {}".format(row.id, row.name))
