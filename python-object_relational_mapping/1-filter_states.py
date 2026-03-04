@@ -1,34 +1,23 @@
 #!/usr/bin/python3
 """
-Lists all states with a name starting with N
+This script connects to a MySQL database and prints all rows from
+the 'states' table ordered by id.
 """
-
 import MySQLdb
-import sys
-
+from sys import argv
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=database
-    )
-
-    cursor = db.cursor()
-    cursor.execute(
+    db = MySQLdb.connect(host='localhost',
+                         port=3306,
+                         user=argv[1],
+                         passwd=argv[2],
+                         db=argv[3])
+    cur = db.cursor()
+    cur.execute(
         "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
-    )
-
-    rows = cursor.fetchall()
-
-    for row in rows:
+        )
+    query_rows = cur.fetchall()
+    for row in query_rows:
         print(row)
-
-    cursor.close()
+    cur.close()
     db.close()
