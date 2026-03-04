@@ -20,10 +20,10 @@ if __name__ == "__main__":
     states = session.query(State)\
         .filter(State.name == sys.argv[4])\
         .order_by(State.id)\
-        .first()
+        .all()
     if states != []:
         for row in states:
-            print("{}: {}".format(row.id, row.name))
+            print("{}".format(row.id))
     else:
         print("Not found")
     session.close()
