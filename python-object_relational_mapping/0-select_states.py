@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""
+This script connects to a MySQL database and prints all rows from
+the 'states' table ordered by id.
+"""
 import MySQLdb
 from sys import argv
 
