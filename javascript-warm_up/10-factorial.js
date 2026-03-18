@@ -1,12 +1,11 @@
 #!/usr/bin/node
 (function () {
   const a = parseInt(process.argv[2]);
-  function factorial(a) {
+  function factorial (a) {
     if (a > 1) {
       return a * factorial(a - 1);
-    }
-    else {
-      return 1
+    } else {
+      return 1;
     }
   }
   console.log(factorial(a));
