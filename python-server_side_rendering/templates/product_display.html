@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Products - My Flask App</title>
+</head>
+
+<body>
+  {% include "header.html" %}
+  <h1>Products</h1>
+    {% if wrong == True %}
+      <p>Wrong source</p>
+    {% elif no_id == True %}
+      <p>Product not found</p>
+    {% else %}
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price (€)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+            <tr>
+                <td>{{ product.name or "N/A" }}</td>
+                <td>{{ product.category or "N/A" }}</td>
+                <td>{{ product.price or "N/A" }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  {% include "footer.html" %}
+</body>
+
+</html>
