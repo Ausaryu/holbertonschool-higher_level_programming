@@ -4,17 +4,21 @@ import csv
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
+
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
 
 @app.route('/items')
 def item():
@@ -22,6 +26,7 @@ def item():
         items = json.load(file)
 
     return render_template('items.html', items=items['items'])
+
 
 @app.route('/products')
 def product():
@@ -35,7 +40,8 @@ def product():
             reader = csv.DictReader(file)
             data = list(reader)
     else:
-        return render_template('product_display.html', products=[], wrong=True, no_id=False)
+        return render_template('product_display.html', products=[],
+                               wrong=True, no_id=False)
 
     if data:
         if id:
@@ -45,11 +51,16 @@ def product():
                     products.append(product)
                     break
             if products == []:
-                return render_template('product_display.html', products=products, wrong=False, no_id=True)
+                return render_template('product_display.html',
+                                       products=products,
+                                       wrong=False, no_id=True)
         else:
             products = data
 
-    return render_template('product_display.html', products=products, wrong=False, no_id=False)
+    return render_template('product_display.html',
+                           products=products,
+                           wrong=False, no_id=False)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
