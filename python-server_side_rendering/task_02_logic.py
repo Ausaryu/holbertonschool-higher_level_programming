@@ -22,7 +22,7 @@ def contact():
 @app.route('/items')
 def item():
     try:
-        with open("/items.json", "r") as file:
+        with open("items.json", "r") as file:
             data = json.load(file)
             items = data['items']
     except FileNotFoundError:
