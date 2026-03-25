@@ -22,10 +22,14 @@ def contact():
 
 @app.route('/items')
 def item():
-    with open("/items.json", "r") as file:
-        items = json.load(file)
+    try:
+        with open("items.json", "r") as file:
+            data = json.load(file)
+            items = data.get('items', [])
+    except FileNotFoundError:
+        items = []
 
-    return render_template('items.html', items=items['items'])
+    return render_template('items.html', items=items)
 
 
 @app.route('/products')
@@ -33,10 +37,10 @@ def product():
     source = request.args.get("source")
     id = request.args.get("id")
     if source == 'json':
-        with open("/products.json", "r") as file:
+        with open("products.json", "r") as file:
             data = json.load(file)
     elif source == 'csv':
-        with open("/products.csv", "r") as file:
+        with open("products.csv", "r") as file:
             reader = csv.DictReader(file)
             data = list(reader)
     else:
