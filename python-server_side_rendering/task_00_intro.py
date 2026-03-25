@@ -1,14 +1,29 @@
 #!/usr/bin/python3
 def generate_invitations(template_content, attendees):
+    """
+    Génère des fichiers d'invitations à partir d'un template et d'une liste de participants.
+
+    Args:
+        template (str): Le contenu du template avec des placeholders {name}, {event_title}, {event_date}, {event_location}.
+        attendees (list of dict): Liste de dictionnaires contenant les informations des participants.
+    """
     if not isinstance(template_content, str):
-        TypeError("template_content is not a string")
-    if not isinstance(attendees, list) and\
-            not all(isinstance(x, dict) for x in attendees):
-        TypeError("attendees is not a list of dictionnaries")
+        print(f"Error: template_content is not a string {type(template_content).__name__}")
+        return
+
+    if not isinstance(attendees, list) or not\
+            all(isinstance(x, dict) for x in attendees):
+        print(f"Error: attendees is not a list of dictionaries {type(attendees).__name__}")
+        return
+
     if template_content == "":
-        ValueError("Template is empty, no output files generated.")
+        print("Template is empty, no output files generated.")
+        return
+
     if attendees == []:
-        ValueError("No data provided, no output files generated.")
+        print("No data provided, no output files generated.")
+        return
+
     length = 0
     for person in attendees:
         with open(f"output_{length}.txt", "a") as file:
