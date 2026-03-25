@@ -24,7 +24,7 @@ def item():
     try:
         with open("items.json", "r") as file:
             data = json.load(file)
-            items = data['items']
+            items = data.get('items', [])
     except FileNotFoundError:
         items = []
 
