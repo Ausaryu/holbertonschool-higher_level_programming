@@ -2,8 +2,8 @@
 def generate_invitations(template_content, attendees):
     if not isinstance(template_content, str):
         TypeError("template_content is not a string")
-    if isinstance(attendees, list) and\
-            all(isinstance(x, dict) for x in attendees):
+    if not isinstance(attendees, list) and\
+            not all(isinstance(x, dict) for x in attendees):
         TypeError("attendees is not a list of dictionnaries")
     if template_content == "":
         ValueError("Template is empty, no output files generated.")
