@@ -4,38 +4,48 @@ import csv
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
+
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
 
+
 @app.route('/items')
 def item():
-    with open("./templates/items.json", "r") as file:
-        items = json.load(file)
+    try:
+        with open("items.json", "r") as file:
+            data = json.load(file)
+            items = data.get('items', [])
+    except FileNotFoundError:
+        items = []
 
-    return render_template('items.html', items=items['items'])
+    return render_template('items.html', items=items)
+
 
 @app.route('/products')
 def product():
     source = request.args.get("source")
     id = request.args.get("id")
     if source == 'json':
-        with open("./templates/products.json", "r") as file:
+        with open("products.json", "r") as file:
             data = json.load(file)
     elif source == 'csv':
-        with open("./templates/products.csv", "r") as file:
+        with open("products.csv", "r") as file:
             reader = csv.DictReader(file)
             data = list(reader)
     else:
-        return render_template('product_display.html', products=[], wrong=True, no_id=False)
+        return render_template('product_display.html', products=[],
+                               wrong=True, no_id=False)
 
     if data:
         if id:
@@ -45,11 +55,16 @@ def product():
                     products.append(product)
                     break
             if products == []:
-                return render_template('product_display.html', products=products, wrong=False, no_id=True)
+                return render_template('product_display.html',
+                                       products=products,
+                                       wrong=False, no_id=True)
         else:
             products = data
 
-    return render_template('product_display.html', products=products, wrong=False, no_id=False)
+    return render_template('product_display.html',
+                           products=products,
+                           wrong=False, no_id=False)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
